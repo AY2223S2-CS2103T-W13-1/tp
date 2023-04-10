@@ -99,7 +99,7 @@ Format: `addPatient n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC a/ADDRESS [t/TAG]`  <b
 * There is no limit to the number of digits for phone number. It is left completely up to the user's discretion.
 
 Examples:
-* `addPatient n/Ben Smith p/98353535 e/ben@abc.com ic/S1234567A a/1 Ben Street, block 13, #01-01` adds the patient `Ben Smith` to the list.
+* `addPatient n/Ben Smith p/98353535 e/ben@abc.com ic/S1234567A a/1 Ben Street, block 13, #01-01 t/mr` adds the patient `Ben Smith` to the list.
 * `addDoctor n/Sarah Tan p/99123456 e/sarah@abc.com ic/T7654321P a/Sarah Rd t/Pediatrician` adds the doctor `Sarah Tan` to the list.
 
 ![AddPatient](images/AddPatient.png)
@@ -118,7 +118,7 @@ Format: `delete ic/NRIC`
   * When a doctor is deleted from the system, all appointments from their appointment list will be removed. This also removes the respective appointments from the patient's appointment list
 
 Examples:
-* `delete ic/S9876543K` deletes the person with the NRIC number S9876543K in MediConnect.
+* `delete ic/S1234567X` deletes the person with the NRIC number S1234567X in MediConnect.
 
 ![DeleteBefore](images/Delete_before.png)
 ![DeleteAfter](images/Delete_after.png)
@@ -136,7 +136,7 @@ Format `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [ic/NRIC] [a/ADDRESS] [t/TAG]…
 * Tags can be removed by typing t/ without specifying any tags after it.
 
 Examples:
-* `edit 9 n/John Smith` will edit the name of the 9th person listed to "John Smith".
+* `edit 8 n/John Smith` will edit the name of the 8th person listed to "John Smith".
 
 ![Edit](images/Edit.png)
 
@@ -197,7 +197,7 @@ Restrictions:
   * The patient does not have any prior booking on this date, **and** the doctor is not scheduled to meet any other patients on the same date.
 
 Examples:
-* `appointment ic/S1234567A d/01-04-2023 10:00 dric/S7654321Z` schedules an appointment for the patient with the NRIC number `S1234567A` and the doctor with the NRIC number `S7654321Z` on `01-04-2023 10:00`.
+* `appointment ic/S1234567A d/01-04-2023 10:00 dric/T7654321P` schedules an appointment for the patient with the NRIC number `S1234567A` and the doctor with the NRIC number `T7654321P` on `01-04-2023 10:00`.
 
 ![Appointment](images/Appointment.png)
 
@@ -231,8 +231,7 @@ Examples:
 Format: `prescribe ic/NRIC m/MEDICATION c/COST`
 
 Examples:
-*  `prescribe m/paracetamol ic/S1234567X c/0.7` prescribes paracetamol at a cost of $0.7 to the patient with NRIC number S1234567X.
-*  `prescribe m/Cough Syrup ic/S1234567X c/10.7` prescribes Cough Syrup at a cost of $10.7 to the patient with NRIC number S1234567X.
+*  `prescribe ic/S1234567A m/paracetamol c/3.5` prescribes paracetamol at a cost of $3.5 to the patient with NRIC number S1234567A.
 
 ![Prescribe](images/Prescribe.png)
 
@@ -243,8 +242,7 @@ Removes a chosen medication from a patient.
 Format: `unprescribe ic/NRIC m/MEDICATION`
 
 Examples:
-*  `unprescribe ic/S1234567X m/paracetamol` removes paracetamol prescription from patient with NRIC number S1234567X.
-*  `unprescribe m/Cough Syrup ic/S1234567X` removes Cough Syrup prescription from patient with NRIC number S1234567X.
+*  `unprescribe ic/S1234567A m/paracetamol` removes paracetamol prescription from patient with NRIC number S1234567A.
 
 ![Unprescribe](images/Unprescribe.png)
 
@@ -255,7 +253,7 @@ Calculates the cost of all medication given a Patient's prescription.
 Format: `bill ic/NRIC`
 
 Examples:
-* `bill ic/S1234567X` calculates the cost of all medication for patient with NRIC S1234567X.
+* `bill ic/S1234567A` calculates the cost of all medication for patient with NRIC S1234567A.
 
 ![Bill](images/Bill.png)
 
